@@ -1,0 +1,9 @@
+Create table Complain (
+Customer_id VARCHAR2(50) NOT NULL,
+Worker_NID VARCHAR2(50) NOT NULL,
+Complain_id VARCHAR2(50) NOT NULL,
+Complain_details VARCHAR2(50),
+CONSTRAINT Complain_Customer_id_FK FOREIGN KEY (Customer_id) REFERENCES Customer(Customer_id), 
+CONSTRAINT Complain_Worker_Nid_FK FOREIGN KEY (Worker_Nid) REFERENCES Worker(Worker_Nid) 
+
+);

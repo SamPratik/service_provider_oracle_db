@@ -1,0 +1,9 @@
+Create table Customer (
+Customer_id VARCHAR2(10) NOT NULL,
+Customer_National_id VARCHAR2(30) NOT NULL,
+Customer_name VARCHAR2(30) NOT NULL,
+Customer_email VARCHAR2(30),
+Address ADDR,
+Customer_Phone_number VARCHAR2(30),
+CONSTRAINT Customer_Customer_id_pk PRIMARY KEY(Customer_id)
+);

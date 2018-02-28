@@ -1,0 +1,14 @@
+CREATE TABLE old_worker_history
+(
+WORKER_NID VARCHAR2(50) NOT NULL,
+NAME VARCHAR2(50) NOT NULL,
+DOB DATE
+);
+CREATE TRIGGER old_worker_history_trigger
+BEFORE DELETE OF WORKER_NID
+ON WORKER
+BEGIN
+dbms_output.put_line('trigger called');
+INSERT INTO old_worker_history VALUES (:old.WORKER_NID,
+:old.NAME,:old.DOB);
+END;

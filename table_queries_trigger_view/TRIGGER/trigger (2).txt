@@ -1,0 +1,46 @@
+Create table Customer_history1 (
+Customer_id VARCHAR2(10) NOT NULL,
+Customer_National_id VARCHAR2(30) NOT NULL,
+Customer_name VARCHAR2(30) NOT NULL,
+Customer_email VARCHAR2(30),
+Customer_Phone_number VARCHAR2(30),
+CONSTRAINT Customer_id1_pk PRIMARY KEY(Customer_id)
+);
+
+
+
+CREATE OR REPLACE TRIGGER customer_trig
+AFTER DELETE ON customer
+FOR EACH ROW
+BEGIN
+INSERT INTO Customer_history1
+VALUES (:old.Customer_id,  :old.Customer_National_id,:old.Customer_Name,:old.Customer_email,:old.customer_phone_number);
+END;
+/
+
+
+Create table Customer_Update_history (
+Customer_id VARCHAR2(10) NOT NULL,
+Customer_National_id VARCHAR2(30) NOT NULL,
+Customer_name VARCHAR2(30) NOT NULL,
+Customer_uname VARCHAR2(30) NOT NULL,
+Customer_email VARCHAR2(30),
+Customer_Phone_number VARCHAR2(30),
+Customer_uPhone VARCHAR2(30),
+CONSTRAINT Customer_id2_pk PRIMARY KEY(Customer_id)
+);
+
+
+CREATE OR REPLACE TRIGGER Custom_upd_trig
+AFTER UPDATE ON Customer
+FOR EACH ROW
+BEGIN
+IF UPDATING('Customer_name') THEN
+INSERT INTO Customer_update_history (Customer_id, Customer_National_id,Customer_name,Customer_uname,Customer_email,Customer_phone_number)
+VALUES (:old.Customer_id,  :old.Customer_National_id,:old.Customer_name,:new.Customer_name,:old.Customer_email,:old.Customer_phone_number);
+ELSIF UPDATING('Customer_phone_number') THEN
+INSERT INTO Customer_update_history (Customer_id, Customer_National_id,Customer_name,Customer_email,Customer_phone_number,Customer_uphone)
+VALUES (:old.Customer_id,  :old.Customer_National_id,:old.Customer_name,:old.Customer_email,:old.Customer_phone_number,:new.Customer_Phone_number);
+END IF;
+END;
+/

@@ -1,0 +1,5 @@
+SELECT WORKER_city, Avg(Salary)
+FROM WORKER
+WHERE WORKER_startdate>'01-JAN-80'
+GROUP BY WORKER_city
+HAVING AVG(Salary)>1000;

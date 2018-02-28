@@ -1,0 +1,55 @@
+1.
+CREATE TABLE Employee(
+            Emp_no                  INTEGER,
+            Emp_name                VARCHAR(30),
+            Emp_address             VARCHAR(30),
+            Emp_salary              VARCHAR(30),
+            CONSTRAINT PKEmployee PRIMARY KEY (Emp_no)
+);
+
+
+2.
+CREATE TABLE Manager(
+            Emp_no         INTEGER,
+            Manager_responsibility  VARCHAR(30),
+            CONSTRAINT PKManager PRIMARY KEY (Emp_no),
+            CONSTRAINT FKManager FOREIGN KEY (Emp_no) REFERENCES Employee ON DELETE CASCADE
+);
+
+
+3.
+CREATE TABLE Accountant(
+            Emp_no         INTEGER,
+            Account_type  VARCHAR(30),
+            CONSTRAINT PKAccountant PRIMARY KEY (Emp_no),
+            CONSTRAINT FKAccountant FOREIGN KEY (Emp_no) REFERENCES Employee ON DELETE CASCADE
+);
+
+4.
+CREATE SEQUENCE seq_Emp_no
+MINVALUE 1
+START WITH 1
+INCREMENT BY 1
+CACHE 100
+
+5.
+
+INSERT INTO Employee (Emp_no,Emp_name,Emp_address,Emp_salary)
+VALUES (seq_Emp_no.nextval,'mamun','mirpur','40k')
+
+6.
+INSERT INTO Accountant (Emp_no,Account_type)
+VALUES (1,'worker account')
+
+INSERT INTO Manager (Emp_no,Manager_responsibility)
+VALUES (2,'maintains customers details')
+
+7.
+select * from employee natural join accountant
+
+select * from employee natural join manager
+
+
+
+
+

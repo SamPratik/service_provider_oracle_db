@@ -1,0 +1,9 @@
+Create table Handles_Billof(
+Customer_id VARCHAR2(50) NOT NULL,
+Emp_no INTEGER,
+Bill_Status VARCHAR2(30), 
+Bill_date VARCHAR2(30),
+Amount VARCHAR2(30),
+CONSTRAINT FKHandles_BillOf_Emp_no  FOREIGN KEY (Emp_no ) REFERENCES Employee(Emp_no ), 
+CONSTRAINT FKHandles_BillOf_Customer FOREIGN KEY (Customer_id) REFERENCES Customer(Customer_id) 
+);

@@ -1,0 +1,4 @@
+SELECT Employee_city, Avg(Salary)
+FROM Employee
+GROUP BY Employee_city
+ORDER BY Avg(Salary) DESC;

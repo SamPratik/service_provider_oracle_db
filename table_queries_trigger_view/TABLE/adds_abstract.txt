@@ -1,0 +1,9 @@
+CREATE TYPE  ADDR AS OBJECT
+(
+ House_No VARCHAR2(20),
+ Street VARCHAR2(20),
+ Village VARCHAR2(20),
+ Thana VARCHAR2(20),
+ District VARCHAR2(20)
+
+);

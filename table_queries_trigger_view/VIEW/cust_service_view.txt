@@ -1,0 +1,2 @@
+CREATE VIEW CUSTOMER_service_VIEW ("Customer ID", "Name","Type","Time","date") AS
+SELECT Customer_id, Customer_name, Service_Type, Service_Time,Service_Date FROM CUSTOMER NATURAL JOIN Takes_Service;
